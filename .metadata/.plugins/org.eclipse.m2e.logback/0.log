@@ -895,3 +895,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact antlr:antlr:j
 2025-03-19 07:57:54,761 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Admin\eclipse-workspace\hibernate_again\src\test\resources
 2025-03-19 08:14:54,039 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Admin\eclipse-workspace\hibernate_again\src\main\resources
 2025-03-19 08:14:54,059 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Admin\eclipse-workspace\hibernate_again\src\test\resources
+2025-03-19 08:34:09,985 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
