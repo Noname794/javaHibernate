@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Cấu hình kết nối MySQL -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernateAgain</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        
+        <!-- Cấu hình dialect -->
+        <!-- Thay vì MySQL8Dialect, hãy dùng -->
+<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        
+        <!-- Hiển thị SQL để debug -->
+        <property name="hibernate.show_sql">true</property>
+        
+        <!-- Tự động tạo/cập nhật bảng -->
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        
+       <property name="hibernate.hbm2ddl.auto">update</property>
+
+        
+        <!-- Thêm entity class nếu dùng annotation -->
+        <mapping class="model.product"/>
+        <mapping class="model.category"/>
+        <mapping class="model.manager"/>
+    </session-factory>
+    
+</hibernate-configuration>
