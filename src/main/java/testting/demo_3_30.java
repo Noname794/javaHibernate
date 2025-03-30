@@ -20,31 +20,7 @@ public class demo_3_30 {
 	        Session ss = hibernat_util.getSessionFactory().openSession();
 	        Transaction tx = ss.beginTransaction(); // Bắt đầu transaction
 	        
-	        CriteriaBuilder build = ss.getCriteriaBuilder();
-	        CriteriaQuery<Object[]> query = build.createQuery(Object[].class);
-	        Root<product> pr = query.from(product.class);
-	        Root<category> cr = query.from(category.class);
 	        
-	        // select c.name, count(p.id), max(p.price) from category c inner join product p on c.id = p.id_category group by c.name order by c.name asc
-	        
-	        
-	        query.where(build.equal(pr.get("ct").get("id_category"), cr.get("id_category")));
-
-	        
-	        query = query.multiselect(cr.get("name").as(String.class), 
-	        						build.count(pr.get("id").as(Integer.class)),
-	        						build.max(pr.get("price").as(Integer.class)));
-	        
-	        query = query.groupBy(cr.get("name").as(String.class));
-	        query = query.orderBy(build.asc(cr.get("name").as(String.class)));
-	        
-	        Query q = ss.createQuery(query);
-	        
-	        List<Object[]> kq = q.getResultList();
-	        kq.forEach(k -> {
-	        	System.out.printf("%s - count: %d - Max: %d\n", k[0], k[1], k[2]);
-
-	        });
 	        
 	        
 	        tx.commit(); // Xác nhận transaction
@@ -108,7 +84,38 @@ public class demo_3_30 {
 	 }
 	 
 	 public static void joinTwoTable() {
-		 
+		 Session ss = hibernat_util.getSessionFactory().openSession();
+	        Transaction tx = ss.beginTransaction(); // Bắt đầu transaction
+	        
+	        CriteriaBuilder build = ss.getCriteriaBuilder();
+	        CriteriaQuery<Object[]> query = build.createQuery(Object[].class);
+	        Root<product> pr = query.from(product.class);
+	        Root<category> cr = query.from(category.class);
+	        
+	        // select c.name, count(p.id), max(p.price) from category c inner join product p on c.id = p.id_category group by c.name order by c.name asc
+	        
+	        
+	        query.where(build.equal(pr.get("ct").get("id_category"), cr.get("id_category")));
+
+	        
+	        query = query.multiselect(cr.get("name").as(String.class), 
+	        						build.count(pr.get("id").as(Integer.class)),
+	        						build.max(pr.get("price").as(Integer.class)));
+	        
+	        query = query.groupBy(cr.get("name").as(String.class));
+	        query = query.orderBy(build.asc(cr.get("name").as(String.class)));
+	        
+	        Query q = ss.createQuery(query);
+	        
+	        List<Object[]> kq = q.getResultList();
+	        kq.forEach(k -> {
+	        	System.out.printf("%s - count: %d - Max: %d\n", k[0], k[1], k[2]);
+
+	        });
+	        
+	        
+	        tx.commit(); // Xác nhận transaction
+	        ss.close(); // Đóng session
 	 }
 	 
 }
