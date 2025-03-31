@@ -35,7 +35,14 @@ public class product implements Serializable {
     // Thêm thuộc tính mới
     private int price;
 
-    public product() {}
+    public product(int id, String name, int price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+
+	public product() {}
 
     public product(int id, String name, Date dateProduct, category ct, int price) {
         this.id = id;
